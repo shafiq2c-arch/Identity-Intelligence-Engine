@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - searxng
+    environment:
+      - SEARXNG_BASE_URL=http://searxng:8080
+      - GROQ_API_KEY=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
+
+  searxng:
+    image: searxng/searxng
+    ports:
+      - "8888:8080"
